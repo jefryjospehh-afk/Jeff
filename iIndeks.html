@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Perjalanan: Tempat Menarik di Sabah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f7ff;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, #e6f2ff, #f0f7ff);
+        }
+        
+        header {
+            background-color: #1a5fb4;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid #ff9f00;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: #2d7cd6;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #1a5fb4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        article {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        article h2 {
+            color: #1a5fb4;
+            border-bottom: 2px solid #ff9f00;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            border: 3px solid #e6f2ff;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.03);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+width: 100%;
+            height: 100%;
+        }
+        
+        .audio-player {
+            background-color: #e6f2ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table th {
+            background-color: #1a5fb4;
+            color: white;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f2f8ff;
+        }
+        
+        table tr:hover {
+            background-color: #e6f2ff;
+        }
+        
+        aside {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        aside h3 {
+            color: #1a5fb4;
+            border-bottom: 2px solid #ff9f00;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .comment-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .comment-form h3 {
+            color: #1a5fb4;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #0d4a9e;
+        }
+        
+        .qa-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .qa-section h3 {
+            color: #1a5fb4;
+            margin-bottom: 1.5rem;
+        }
+        
+        .qa-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .qa-item h4 {
+            color: #2d7cd6;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: #1a5fb4;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 5px solid #ff9f00;
+        }
+        
+        .color-test {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color1 { background-color: #1a5fb4; }
+        .color2 { background-color: #2d7cd6; }
+
+.color3 { background-color: #ff9f00; }
+        .color4 { background-color: #f0f7ff; }
+        .color5 { background-color: #e6f2ff; }
+        
+        .progress-note {
+            background-color: #fff9e6;
+            border-left: 5px solid #ff9f00;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog Perjalanan: Tempat Menarik di Sabah</h1>
+        <p>Jelajahi keindahan alam dan budaya Sabah melalui blog perjalanan ini. Temukan lokasi-lokasi menarik untuk dikunjungi di Negeri Di Bawah Bayu.</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Utama</a></li>
+            <li><a href="#destinations">Destinasi</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#table">Jadual Perjalanan</a></li>
+            <li><a href="#qa">Soalan Lazim</a></li>
+            <li><a href="#comments">Komen</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="main-content">
+            <main>
+                <article id="home">
+                    <h2>Pengenalan kepada Keindahan Sabah</h2>
+                    <p>Sabah, yang terletak di utara Borneo, adalah salah satu negeri di Malaysia yang kaya dengan keindahan alam semula jadi dan kepelbagaian budaya. Dari puncak Gunung Kinabalu yang megah hingga ke pulau-pulau yang mempesona, Sabah menawarkan pengalaman perjalanan yang tidak dapat dilupakan.</p>
+                    
+                    <div class="image-gallery">
+                        <img src="https://cdn.i-scmp.com/sites/default/files/styles/540x360/public/d8/images/methode/2019/10/28/e81183be-f17d-11e9-9f3d-785f2d889e39_image_hires_152632.jpg?itok=kUroMV6Q&v=1572247604" alt="Gunung Kinabalu">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/tanjung-aru-1024x684.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Pulau di Sabah">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/tun-sakaran-marine-park-1024x681.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Hutan Sabah">
+                    </div>
+                    
+                    <p>Blog ini akan membawa anda meneroka beberapa lokasi menarik yang wajib dikunjungi di Sabah. Saya akan berkongsi pengalaman perjalanan, tip berguna, dan maklumat penting untuk membantu anda merancang perjalanan ke Sabah.</p>
+                    
+                    <div class="progress-note">
+                        <strong>Catatan Lakaran:</strong> Bahagian ini akan saya lengkapkan dengan lakaran idea awal untuk reka bentuk blog, termasuk susun atur halaman, palet warna, dan konsep visual.
+                    </div>
+                </article>
+                
+                <article id="destinations">
+                    <h2>Destinasi Menarik di Sabah</h2>
+                    
+                    <h3>Gunung Kinabalu</h3>
+                    <p>Gunung Kinabalu adalah gunung tertinggi di Malaysia dan antara gunung tertinggi di Asia Tenggara. Dengan ketinggian 4,095 meter, pendakian ke puncaknya adalah pengalaman yang mencabar tetapi sangat berbaloi. Taman Kinabalu yang mengelilingi gunung ini adalah Tapak Warisan Dunia UNESCO yang kaya dengan biodiversiti.</p>
+                    
+                    <h3>Taman Laut Tunku Abdul Rahman</h3>
+                    <p>Taman laut ini terdiri daripada lima pulau yang terletak berhampiran Kota Kinabalu. Pulau-pulau ini menawarkan pantai berpasir putih, air jernih, dan terumbu karang yang indah. Ia adalah destinasi sempurna untuk aktiviti snorkeling, menyelam, atau sekadar berehat di pantai.</p>
+                    
+                    <div class="video-container">
+                        <iframe src="https://youtu.be/ek7xOH2V84o" title="Video tentang Sabah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
+                    
+                    <h3>Ladang Teh Sabah</h3>
+                    <p>Terletak di kawasan Kundasang, Ladang Teh Sabah menawarkan pemandangan yang memukau dengan lereng bukit yang dipenuhi pokok teh. Pengunjung boleh menyertai lawatan ladang, belajar tentang proses penghasilan teh, dan menikmati secawan teh segar sambil menghirup udara segar pergunungan.</p>
+                    
+                    <div class="audio-player">
+                        <h3>Dengarkan Lagu Tradisional Sabah</h3>
+                        <audio controls>
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+                            Pelayar anda tidak menyokong elemen audio.
+                        </audio>
+                        <p>Contoh audio lagu tradisional masyarakat Sabah</p>
+                    </div>
+                </article>
+                
+                <article id="gallery">
+                    <h2>Galeri Gambar Sabah</h2>
+                    <p>Berikut adalah koleksi gambar dari beberapa lokasi menarik di Sabah:</p>
+                    
+                    <div class="image-gallery">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/ums-odec-beach-1024x768.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Sunset di Sabah">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/kelambu-beach-1024x682.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Budaya Sabah">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/labuan-beach-1024x683.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Hidupan Laut Sabah">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/12/tun-sakaran-marine-park-1024x681.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Orang Utan Sabah">
+                    </div>
+                    
+                    <div class="progress-note">
+                        <strong>Ujian Warna:</strong> Berikut adalah 5 warna utama yang digunakan dalam reka bentuk blog ini:
+                        <div class="color-test">
+                            <div class="color-box color1" title="#1a5fb4 - Biru Tua"></div>
+                            <div class="color-box color2" title="#2d7cd6 - Biru Sedang"></div>
+                            <div class="color-box color3" title="#ff9f00 - Jingga"></div>
+                            <div class="color-box color4" title="#f0f7ff - Biru Sangat Muda"></div>
+                            <div class="color-box color5" title="#e6f2ff - Biru Muda"></div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="table">
+                    <h2>Jadual Perjalanan Contoh (5 Hari di Sabah)</h2>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hari</th>
+                                <th>Destinasi</th>
+                                <th>Aktiviti</th>
+                                <th>Penginapan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Kota Kinabalu</td>
+                                <td>Lawatan kota, Pasar Filipina, Menikmati sunset di Tanjung Aru</td>
+                                <td>Hotel di Kota Kinabalu</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Taman Laut Tunku Abdul Rahman</td>
+                                <td>Snorkeling, berenang, berkelah di pulau</td>
+                                <td>Hotel di Kota Kinabalu</td>
+
+</tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kundasang</td>
+                                <td>Lawatan Ladang Teh, Desa Dairy Farm, Pasar Tamu</td>
+                                <td>Homestay Kundasang</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Taman Kinabalu</td>
+                                <td>Jalan-jalan di taman, lawatan Pusat Pemulihan Orang Utan</td>
+                                <td>Homestay Kundasang</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Kota Kinabalu</td>
+                                <td>Membeli-belah cenderamata, makanan tempatan, ke lapangan terbang</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </main>
+            
+            <aside>
+                <h3>Fakta Menarik tentang Sabah</h3>
+                <ul>
+                    <li>Sabah dikenali sebagai "Negeri Di Bawah Bayu"</li>
+                    <li>Mempunyai lebih daripada 30 kumpulan etnik</li>
+                    <li>Rumah kepada bunga terbesar di dunia, Rafflesia</li>
+                    <li>Mempunyai hutan hujan tertua di dunia (130 juta tahun)</li>
+                    <li>Tempat perlindungan orang utan terbesar di dunia</li>
+                </ul>
+                
+                <h3>Tip Perjalanan</h3>
+                <ul>
+                    <li>Bawa pakaian sesuai cuaca (hujan dan panas)</li>
+                    <li>Sewa kereta untuk mobiliti yang lebih baik</li>
+                    <li>Cuba makanan tempatan seperti hinava dan bambangan</li>
+                    <li>Hormati adat dan budaya masyarakat tempatan</li>
+                    <li>Beli insurans perjalanan yang mencukupi</li>
+                </ul>
+                
+                <h3>Pautan Berguna</h3>
+                <ul>
+                    <li><a href="https://www.sabahtourism.com/" target="_blank">Laman Pelancongan Sabah</a></li>
+                    <li><a href="https://www.malaysia.travel/" target="_blank">Pelancongan Malaysia</a></li>
+                    <li><a href="https://www.sabahparks.org.my/" target="_blank">Taman-Taman Sabah</a></li>
+                </ul>
+            </aside>
+        </div>
+        
+        <div class="qa-section" id="qa">
+            <h3>Soalan Lazim (Q&A)</h3>
+            
+            <div class="qa-item">
+                <h4>Bilakah masa terbaik untuk melawat Sabah?</h4>
+                <p>Sabah boleh dilawati sepanjang tahun, tetapi bulan Mac hingga Oktober adalah yang terbaik kerana cuaca lebih kering dan sesuai untuk aktiviti luar.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h4>Adakah perlu mendapatkan vaksin sebelum ke Sabah?</h4>
+                <p>Tiada vaksin wajib untuk ke Sabah, tetapi disyorkan untuk mendapatkan vaksin biasa seperti Hepatitis A & B, dan Typhoid jika merancang untuk melawat kawasan pedalaman.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h4>Bagaimana pengangkutan di Sabah?</h4>
+                <p>Kota Kinabalu mempunyai sistem pengangkutan yang baik termasuk teksi, bas, dan e-hailing. Untuk ke destinasi luar bandar, disyorkan untuk menyewa kereta atau menyertai pakej pelancongan.</p>
+            </div>
+            
+            <div class="qa-item">
+                <h4>Apakah makanan tradisional Sabah yang mesti dicuba?</h4>
+                <p>Beberapa makanan tradisional yang mesti dicuba termasuk Hinava (ikan mentah perap), Bambangan (buah tempatan), Nonsom (ikan masin fermentasi), dan Tuaran Mee.</p>
+
+</div>
+        </div>
+        
+        <div class="comment-form" id="comments">
+            <h3>Borang Komen dan Maklum Balas</h3>
+            <p>Kongsi pengalaman anda atau berikan cadangan untuk blog ini:</p>
+            
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
